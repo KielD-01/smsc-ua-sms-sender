@@ -296,10 +296,21 @@ class SmscUaComponent extends Component
             throw new \Exception('Credentials are wrong or not provided');
         }
 
-        $this->setArgument('login', $this->_login);
-        $this->setArgument('psw', $this->_password);
+        $this->_checkArgument('login') ?: $this->setArgument('login', $this->_login);
+        $this->_checkArgument('psw') ?: $this->setArgument('psw', $this->_password);
 
         return true;
+    }
+
+    /**
+     * Checking if argument exists
+     *
+     * @param $argument
+     * @return bool
+     */
+    private function _checkArgument($argument)
+    {
+        return array_key_exists($argument, $this->_arguments);
     }
 
     /**
