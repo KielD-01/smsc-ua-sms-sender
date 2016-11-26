@@ -195,7 +195,7 @@ class SmscUaComponent extends Component
             foreach ($numbers as $number) {
                 array_push($this->_numbers, $number);
             }
-            
+
             $this->_numbers = array_unique($this->_numbers);
 
             return $this;

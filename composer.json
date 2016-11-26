@@ -1,20 +1,21 @@
 {
-    "name": "kield-01/smsc-ua-sms-sender",
-    "description": "SMS/MMS/E-Mail/Viber/Voicemail messages sending with SMSC.UA service for CakePHP 3.3.x",
-    "type": "component",
-    "license": "MIT",
-    "require": {
-        "php": ">=5.5",
-	"fabpot/goutte" : "^3.2",
-	"cakephp/cakephp": "3.3.*"
-    	},
-    "autoload": {
-        "psr-4": {
-            "Cake\\": "src"
-        }
-    },
-    "suggest" : {
-    	"fabpot/goutte" : "Goutte/GuzzleHttp Client"
+  "name": "kield-01/smsc-ua-sms-sender",
+  "description": "SMS/MMS/E-Mail/Viber/Voicemail messages sending with SMSC.UA service for CakePHP 3.3.x",
+  "type": "component",
+  "license": "MIT",
+  "minimum-stability": "dev-master",
+  "require": {
+    "php": ">=5.5",
+    "fabpot/goutte": "^3.2",
+    "cakephp/cakephp": "3.3.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Cake\\": "src"
     }
+  },
+  "suggest": {
+    "fabpot/goutte": "Goutte/GuzzleHttp Client"
+  }
 }
 
