@@ -1,5 +1,5 @@
 {
-    "name": "KielD-01/smsc-ua-sms-sender",
+    "name": "kield-01/smsc-ua-sms-sender",
     "description": "SMS/MMS/E-Mail/Viber/Voicemail messages sending with SMSC.UA service",
     "type": "component",
     "license": "MIT",
