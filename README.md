@@ -31,18 +31,22 @@ Set up credentials after loading component:
     *
     * @property SmscUaComponent $SmscUa
     **/
-
-    public function initialize(){
-           $this->loadComponent('SmscUa');
-           
-           $this->SmscUa
-               ->setLogin('__LOGIN__')
-               ->setPassword('__PASSWORD__');
+    class X extends AppController
+    {
+    
+        public function initialize(){
+               $this->loadComponent('SmscUa');
                
-            /** OR **/
-            
-            $this->SmscUa
-                ->setArgument('login', '__LOGIN__')
-                ->setArgument('psw', '__PASSWORD__');
+               $this->SmscUa
+                   ->setLogin('__LOGIN__')
+                   ->setPassword('__PASSWORD__');
+                   
+                /** OR **/
+                
+                $this->SmscUa
+                    ->setArgument('login', '__LOGIN__')
+                    ->setArgument('psw', '__PASSWORD__');
+        }
+        
     }
 ```
