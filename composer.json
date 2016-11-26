@@ -12,6 +12,9 @@
         "psr-4": {
             "SmsSender\\": "src/Controller/Component"
         }
-    }
+    },
+"scripts" : {
+ "pre-install-cmd" : "composer require fabpot/goutte" 
+}
 }
 
