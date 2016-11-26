@@ -195,9 +195,6 @@ class SmscUaComponent extends Component
             foreach ($numbers as $number) {
                 array_push($this->_numbers, $number);
             }
-
-            $this->_numbers = array_unique($this->_numbers);
-
             return $this;
         }
 
@@ -243,7 +240,7 @@ class SmscUaComponent extends Component
         }
 
         if (!isset($this->_errors['numbers'])) {
-            return $this->setArgument('phones', implode(',', $this->_numbers));
+            return $this->setArgument('phones', implode(',', array_unique($this->_numbers)));
         }
 
         return true;
