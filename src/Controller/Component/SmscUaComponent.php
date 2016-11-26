@@ -195,9 +195,6 @@ class SmscUaComponent extends Component
             foreach ($numbers as $number) {
                 array_push($this->_numbers, $number);
             }
-
-            $this->_numbers = array_unique($this->_numbers);
-
             return $this;
         }
 
@@ -216,6 +213,25 @@ class SmscUaComponent extends Component
         $this->_message_body = $message_body;
         return $this;
     }
+
+    /**
+     * @param $response_format
+     * @return $this
+     * @throws \Exception
+     */
+    public function setResponseFormat($response_format)
+    {
+        $response_format = mb_strtolower($response_format);
+
+        if (array_key_exists($response_format, $this->_response_formats)) {
+            $this->_response_format = $response_format;
+            return $this;
+        }
+
+        throw new \Exception("Response format {$response_format} does not exists");
+    }
+
+
 
     /** METHODS */
 
@@ -243,7 +259,7 @@ class SmscUaComponent extends Component
         }
 
         if (!isset($this->_errors['numbers'])) {
-            return $this->setArgument('phones', implode(',', $this->_numbers));
+            return $this->setArgument('phones', implode(',', array_unique($this->_numbers)));
         }
 
         return true;
@@ -287,10 +303,11 @@ class SmscUaComponent extends Component
     }
 
     /**
-     * Preparing
+     * Preparing before send
      *
      * @param null $uri
-     * @return \Exception|string
+     * @return string
+     * @throws \Exception
      */
     private function _beforeSend($uri = null)
     {

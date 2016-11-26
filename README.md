@@ -50,3 +50,26 @@ Set up credentials after loading component:
         
     }
 ```
+
+### API
+
+
+```
+/** Allows You to add one number to current numbers list **/
+$this->SmscUa->setNumbers('380666666666');
+
+/** Allows You to add bulk to current numbers list **/
+$this->SmscUa->setNumbers(['380666666666', '380666666667']);
+
+/** Allows You to set message Text **/
+$this->SmscUa->setMessageBody('Random text');
+
+/** Allows You to change Response format **/
+$this->SmscUa->setResponseFormat('string'); // Response as string data
+$this->SmscUa->setResponseFormat('digits'); // Response as digits, separated by ','
+$this->SmscUa->setResponseFormat('xml');    // Response as XML Document
+$this->SmscUa->setResponseFormat('json');   // Response as JSON Object
+
+/** Sending methods **/
+$this->SmscUa->sendPlainTextSMS(); // Sending simple SMS
+``` 
