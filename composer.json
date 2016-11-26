@@ -3,7 +3,7 @@
   "description": "SMS/MMS/E-Mail/Viber/Voicemail messages sending with SMSC.UA service for CakePHP 3.3.x",
   "type": "component",
   "license": "MIT",
-  "minimum-stability": "1.1",
+  "minimum-stability": "@stable",
   "require": {
     "php": ">=5.5",
     "fabpot/goutte": "^3.2",
