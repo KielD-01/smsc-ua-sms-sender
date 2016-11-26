@@ -214,6 +214,25 @@ class SmscUaComponent extends Component
         return $this;
     }
 
+    /**
+     * @param $response_format
+     * @return $this
+     * @throws \Exception
+     */
+    public function setResponseFormat($response_format)
+    {
+        $response_format = mb_strtolower($response_format);
+
+        if (array_key_exists($response_format, $this->_response_formats)) {
+            $this->_response_format = $response_format;
+            return $this;
+        }
+
+        throw new \Exception("Response format {$response_format} does not exists");
+    }
+
+
+
     /** METHODS */
 
     /**
@@ -284,10 +303,11 @@ class SmscUaComponent extends Component
     }
 
     /**
-     * Preparing
+     * Preparing before send
      *
      * @param null $uri
-     * @return \Exception|string
+     * @return string
+     * @throws \Exception
      */
     private function _beforeSend($uri = null)
     {
