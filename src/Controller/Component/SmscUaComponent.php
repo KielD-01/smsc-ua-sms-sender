@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class SmscUaComponent
- * @package SmsSender
+ * @package Cake\Controller\Component
  */
 class SmscUaComponent extends Component
 {
