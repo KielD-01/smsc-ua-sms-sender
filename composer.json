@@ -13,8 +13,8 @@
             "SmsSender\\": "src/Controller/Component"
         }
     },
-"scripts" : {
- "pre-install-cmd" : "composer require fabpot/goutte" 
-}
+    "suggest" : {
+    	"fabpot/goutte" : "Goutte/GuzzleHttp Client"
+    }
 }
 
