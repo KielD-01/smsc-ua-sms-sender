@@ -1,5 +1,5 @@
 <?php
-namespace SmsSender;
+namespace Cake\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\Core\Configure;
