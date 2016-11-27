@@ -168,7 +168,7 @@ class SmscUaComponent extends Component
     {
         return $this->_rules;
     }
-    
+
     /** SETTERS **/
 
     /**
@@ -263,7 +263,7 @@ class SmscUaComponent extends Component
      */
     private function setRules()
     {
-        $this->_rules = (new Configure\Engine\PhpConfig($this->_rules_path))->read('rules')['rules'];
+        $this->_rules = (new Configure\Engine\PhpConfig($this->_rules_path))->read('rules');
         return $this;
     }
 
@@ -277,6 +277,7 @@ class SmscUaComponent extends Component
         parent::initialize($config);
         $this->_sender = new Sender();
         $this->__getIp();
+        $this->setRules();
     }
 
     /**
