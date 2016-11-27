@@ -12,11 +12,27 @@ return [
             'ping', 'mms', 'mail', 'viber', 'call', 'voice',
             'param', 'subj', 'charset', 'cost', 'fmt', 'list',
             'valid', 'maxsms', 'imgcode', 'userip', 'err', 'op',
-            'pp'
+            'pp', 'login', 'psw'
         ]
     ],
-    'mms' => [],
-    'email' => [],
-    'voice' => [],
-    'viber' => []
+    'mms' => [
+        'allowed_arguments' => [
+            'login', 'psw'
+        ]
+    ],
+    'email' => [
+        'allowed_arguments' => [
+            'login', 'psw'
+        ]
+    ],
+    'voice' => [
+        'allowed_arguments' => [
+            'login', 'psw'
+        ]
+    ],
+    'viber' => [
+        'allowed_arguments' => [
+            'login', 'psw'
+        ]
+    ]
 ];
