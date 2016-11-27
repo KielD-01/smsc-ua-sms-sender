@@ -267,26 +267,20 @@ class SmscUaComponent extends Component
         return $this;
     }
 
-    /** METHODS */
-
-    /**
-     * @param array $config
-     */
-    public function initialize(array $config = [])
-    {
-        parent::initialize($config);
-        $this->_sender = new Sender();
-        $this->__getIp();
-        $this->setRules();
-    }
+    /** CHECKERS **/
 
     /**
      * Checking receiver(-s) numbers
      *
+     * @throws \Exception
      * @return bool|boolean|null
      */
     private function _checkNumbers()
     {
+        if (count($this->_numbers) == 0) {
+            throw new \Exception('You need to provide at least one number');
+        }
+
         foreach ($this->_numbers as $number) {
             if (!preg_match($this->_number_regex, $number)) {
                 return $this->_errors['numbers'][] = "Number {$number} is not applicable regarding to pattern rules";
@@ -372,12 +366,42 @@ class SmscUaComponent extends Component
     }
 
     /**
+     * Checking
+     *
+     * @param string $type
+     */
+    private function _checkRules($type = 'sms')
+    {
+        $rules = $this->_rules[$type];
+
+        foreach ($this->_arguments as $argument => $value) {
+            if (!in_array($argument, $rules['allowed_arguments'])) {
+                $this->_errors['wrong_argument'][] = "Argument {$argument} does not exist";
+            }
+        }
+    }
+
+    /**  METHODS **/
+
+    /**
+     * @param array $config
+     */
+    public function initialize(array $config = [])
+    {
+        parent::initialize($config);
+        $this->_sender = new Sender();
+        $this->__getIp();
+        $this->setRules();
+    }
+
+    /**
      * Sending usual SMS
      *
      * @return mixed|string
      */
     public function sendPlainTextSMS()
     {
+        $this->_checkRules();
         return $this->_getResponse($this->_sender->get($this->_beforeSend('send')));
     }
 
