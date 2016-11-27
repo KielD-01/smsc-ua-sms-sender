@@ -112,6 +112,21 @@ class SmscUaComponent extends Component
     '\+?(99[^4568]\d{7,11}|994\d{9}|9955\d{8}|996[57]\d{8}|9989\d{8}|380[34569]\d{8}|' .
     '375[234]\d{8}|372\d{7,8}|37[0-4]\d{8}))$/';
 
+    /**
+     * Rules array
+     *
+     * @var array
+     */
+    private $_rules = [];
+
+    /**
+     * Rules path
+     *
+     * @var string
+     */
+    private $_rules_path = ROOT . DS . 'vendor' . DS . 'kield-01' . DS .
+    'smsc-ua-sms-sender' . DS . 'data' . DS;
+
     /** GETTERS **/
 
     /**
@@ -144,6 +159,16 @@ class SmscUaComponent extends Component
         return $this->_arguments;
     }
 
+    /**
+     * Get all rules
+     *
+     * @return array
+     */
+    public function getRules()
+    {
+        return $this->_rules;
+    }
+    
     /** SETTERS **/
 
     /**
@@ -231,7 +256,16 @@ class SmscUaComponent extends Component
         throw new \Exception("Response format {$response_format} does not exists");
     }
 
-
+    /**
+     * Sets custom rules
+     *
+     * @return SmscUaComponent
+     */
+    private function setRules()
+    {
+        $this->_rules = (new Configure\Engine\PhpConfig($this->_rules_path))->read('rules')['rules'];
+        return $this;
+    }
 
     /** METHODS */
 
