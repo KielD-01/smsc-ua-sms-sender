@@ -356,6 +356,7 @@ class SmscUaComponent extends Component
         $this->_checkCredentials();
         $this->_checkNumbers();
         $this->_checkMessage();
+        $this->_checkRules();
 
         if ($this->_errors) {
             Log::error($this->_errors);
@@ -401,7 +402,7 @@ class SmscUaComponent extends Component
      */
     public function sendPlainTextSMS()
     {
-        $this->_checkRules();
+
         return $this->_getResponse($this->_sender->get($this->_beforeSend('send')));
     }
 
